@@ -25,8 +25,8 @@ import java.util.Scanner;
 public class MysqlGenerator {
 
     private static final String PROJECT_NAME = "mybatis-plus-batch";
-    private static final String ROOT_PACKAGE = "com.example.mybatisplusbatch.test";
-    private static final String DATASOURCE_URL = "jdbc:mysql://192.168.11.113:30013/hc_hiwork_suite?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8";
+    private static final String ROOT_PACKAGE = "com.example.mybatisplusbatch";
+    private static final String DATASOURCE_URL = "jdbc:mysql://192.168.11.113:30013/hc_hiwork_demo?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8";
     private static final String DATASOURCE_USERNAME = "sqlhiwork";
     private static final String DATASOURCE_PASSWORD = "4komi8r4y^Rm";
     private static final String TABLE_PREFIX = "";
