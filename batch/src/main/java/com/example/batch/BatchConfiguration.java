@@ -1,5 +1,7 @@
 package com.example.batch;
 
+import com.example.batch.steps.Step2;
+import com.example.batch.steps.Step3;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -59,13 +61,28 @@ public class BatchConfiguration {
                 .build();
     }
 
+    @Autowired
+    Step2 step2;
+
+    @Autowired
+    Step3 step3;
+
     @Bean
     public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
         return jobBuilderFactory.get("importUserJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
-                .flow(step1)
-                .end()
+                .start(step1)
+                .next(
+                        stepBuilderFactory.get("step2")
+                        .tasklet(step2)
+                        .build()
+                )
+                .next(
+                        stepBuilderFactory.get("step3")
+                        .tasklet(step3)
+                        .build()
+                )
                 .build();
     }
 
